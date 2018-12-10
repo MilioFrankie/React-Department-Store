@@ -31,10 +31,10 @@ export default class NavBar extends Component {
           </Menu.Item>
         </Link>
 
-        <Link to={""}>
+        <Link to={"/departments"}>
           <Menu.Item
-            name="Department"
-            active={activeItem === "department"}
+            name="Departments"
+            active={activeItem === "departments"}
             onClick={this.handleItemClick}
           >
             Departments
