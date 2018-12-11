@@ -2,10 +2,9 @@ import React from "react";
 import { Container } from "semantic-ui-react";
 
 const About = () => (
-  <Container >
+  <Container>
     <h1>About</h1>
     <hr />
-
     <p>
       A department store is a retail establishment offering a wide range of
       consumer goods in different product categories known as "departments". In
