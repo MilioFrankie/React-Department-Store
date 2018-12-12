@@ -3,9 +3,11 @@ import { Container } from "semantic-ui-react";
 
 const About = () => (
   <Container>
-    <h1>About</h1>
+    <h1 style={styles.header}>About</h1>
     <hr />
-    <p>
+    <br />
+    <br />
+    <p style={styles.fontColor}>
       A department store is a retail establishment offering a wide range of
       consumer goods in different product categories known as "departments". In
       modern major cities, the department store made a dramatic appearance in
@@ -15,7 +17,7 @@ const About = () => (
       New York (with Stewart's).[1]
     </p>
     <br />
-    <p>
+    <p style={styles.fontColor}>
       Today, departments often include the following: clothing, furniture, home
       appliances, toys, cosmetics, houseware, gardening, toiletries, sporting
       goods, do it yourself, paint, and hardware. Additionally, other lines of
@@ -31,5 +33,16 @@ const About = () => (
     </p>
   </Container>
 );
+
+const styles = {
+  header: {
+    color: "#1ed2f4",
+    fontWeight: "bold"
+  },
+  fontColor: {
+    color: "white",
+    fontWeight: "bold"
+  }
+};
 
 export default About;

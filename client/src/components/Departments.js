@@ -15,12 +15,23 @@ class Departments extends React.Component {
   render() {
     return (
       <div>
-        <Header as="h1">Departments</Header>
+        <Header as="h1" style={styles.header}>
+          Departments
+        </Header>
         <hr />
+        <br />
+        <br />
         <DepList deps={this.state.departments} />
       </div>
     );
   }
 }
+
+const styles = {
+  header: {
+    color: "#1ed2f4",
+    fontWeight: "bold"
+  }
+};
 
 export default Departments;

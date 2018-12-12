@@ -1,13 +1,21 @@
 import React from "react";
-import Dep from "./Dep";
 import { Link } from "react-router-dom";
+import { Item, List, Segment } from "semantic-ui-react";
 
 const DepList = ({ deps }) => (
   <div>
     {deps.map(d => (
-      <Link to={`departments/${d.id}`}>
-        <h2>{d.name}</h2>
-      </Link>
+      <Segment inverted>
+        <List divided inverted relaxed>
+          <List.Item>
+            <List.Header>
+              <Link to={`departments/${d.id}`}>
+                <h2>{d.name}</h2>
+              </Link>
+            </List.Header>
+          </List.Item>
+        </List>
+      </Segment>
     ))}
   </div>
 );

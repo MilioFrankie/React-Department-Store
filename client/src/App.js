@@ -29,7 +29,7 @@ class App extends React.Component {
 }
 
 const AppContainer = styled.div`
-  background: linear-gradient(45deg, #f2efe6, #182033);
+  background: linear-gradient(to bottom, #2b2b3a, #1ed2f4);
   height: 150vh;
 `;
 
