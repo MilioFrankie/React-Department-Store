@@ -7,11 +7,12 @@ import NoMatch from "./components/NoMatch";
 import Dep from "./components/Dep";
 import Departments from "./components/Departments";
 import { Container } from "semantic-ui-react";
+import styled from "styled-components";
 
 class App extends React.Component {
   render() {
     return (
-      <Fragment>
+      <AppContainer>
         <NavBar />
         <Container>
           <Switch>
@@ -22,9 +23,14 @@ class App extends React.Component {
             <Route component={NoMatch} />
           </Switch>
         </Container>
-      </Fragment>
+      </AppContainer>
     );
   }
 }
+
+const AppContainer = styled.div`
+  background: linear-gradient(45deg, #f2efe6, #182033);
+  height: 150vh;
+`;
 
 export default App;
