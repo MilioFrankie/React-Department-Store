@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
-import { Card, Icon, Button } from "semantic-ui-react";
+import { Link } from "react-router-dom";
+import { Card, Icon, Button, Header } from "semantic-ui-react";
 
 class Dep extends React.Component {
   state = { dep: {}, items: [] };
@@ -15,9 +16,19 @@ class Dep extends React.Component {
     });
   }
 
+  handleDelete = id => {
+    const remove = window.confirm(
+      "Are you sure you want to delete this department?"
+    );
+    if (remove)
+      axios
+        .delete(`/api/departments/${id}`)
+        .then(res => this.props.history.push("/departments"));
+  };
+
   renderItems = () => {
     return this.state.items.map(i => (
-      <Card raised>
+      <Card raised style={styles.cardColor}>
         <Card.Content>
           <Card.Header textAlign="center" as="h2">
             {i.name}
@@ -40,9 +51,22 @@ class Dep extends React.Component {
   };
 
   render() {
+    const { name, id } = this.state.dep;
     return (
       <div>
-        <h1 style={styles.header}>{this.state.dep.name}</h1>
+        <div style={styles.flex}>
+          <Header as="h1" style={styles.header}>
+            {name}
+          </Header>
+          <div>
+            <Link to={`/departments/${id}/edit`}>
+              <Button color="grey">Edit</Button>
+            </Link>
+            <Button color="red" onClick={() => this.handleDelete(id)}>
+              Delete
+            </Button>
+          </div>
+        </div>
         <hr />
         <br />
         <br />
@@ -59,6 +83,13 @@ const styles = {
   },
   cardColor: {
     background: "#f4f5f6"
+  },
+  textColor: {
+    color: "white"
+  },
+  flex: {
+    display: "flex",
+    justifyContent: "space-between"
   }
 };
 

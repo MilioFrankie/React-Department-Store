@@ -21,6 +21,11 @@ class App extends React.Component {
             <Route exact path="/about" component={About} />
             <Route exact path="/departments" component={Departments} />
             <Route exact path="/departments/new" component={DepForm} />
+            <Route
+              exact
+              path="/departments/:id/edit"
+              render={props => <DepForm edit {...props} />}
+            />
             <Route exact path="/departments/:id" component={Dep} />
             <Route component={NoMatch} />
           </Switch>
@@ -32,7 +37,7 @@ class App extends React.Component {
 
 const AppContainer = styled.div`
   background: linear-gradient(to bottom, #2b2b3a, #1ed2f4);
-  height: 150vh;
+  height: 175vh;
 `;
 
 export default App;
