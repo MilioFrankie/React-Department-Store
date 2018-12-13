@@ -1,5 +1,6 @@
 import React from "react";
-import { Header } from "semantic-ui-react";
+import { Link } from "react-router-dom";
+import { Header, Button, Icon } from "semantic-ui-react";
 import axios from "axios";
 import DepList from "./DepList";
 
@@ -18,6 +19,12 @@ class Departments extends React.Component {
         <Header as="h1" style={styles.header}>
           Departments
         </Header>
+        <Link to="/departments/new">
+          <Button icon color="green">
+            <Icon name="add" />
+            Add Department
+          </Button>
+        </Link>
         <hr />
         <br />
         <br />
