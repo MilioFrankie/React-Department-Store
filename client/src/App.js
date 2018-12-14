@@ -7,6 +7,7 @@ import NoMatch from "./components/NoMatch";
 import Dep from "./components/Dep";
 import Departments from "./components/Departments";
 import DepForm from "./components/DepForm";
+import ItemForm from "./components/ItemForm";
 import { Container } from "semantic-ui-react";
 import styled from "styled-components";
 
@@ -25,6 +26,11 @@ class App extends React.Component {
               exact
               path="/departments/:id/edit"
               render={props => <DepForm edit {...props} />}
+            />
+            <Route
+              exact
+              path="/departments/:id/item/new"
+              component={ItemForm}
             />
             <Route exact path="/departments/:id" component={Dep} />
             <Route component={NoMatch} />

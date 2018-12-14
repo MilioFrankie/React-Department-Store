@@ -12,4 +12,4 @@
   end
 
 puts "5 departments created"
-puts "15 department created per departments"
+puts "16 department created per departments"

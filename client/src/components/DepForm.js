@@ -48,7 +48,9 @@ class DepForm extends React.Component {
           onChange={this.handleChange}
           required
         />
-        <Form.Button color="green">Submit</Form.Button>
+        <Form.Button color="green" floated="right">
+          Submit
+        </Form.Button>
       </Form>
     );
   }

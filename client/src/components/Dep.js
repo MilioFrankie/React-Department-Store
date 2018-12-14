@@ -26,6 +26,21 @@ class Dep extends React.Component {
         .then(res => this.props.history.push("/departments"));
   };
 
+  itemDelete = id => {
+    const remove = window.confirm(
+      "Are your sure you want to delete this item?"
+    );
+    if (remove)
+      axios
+        .delete(`/api/departments/${this.state.dep.id}/items/${id}`)
+        .then(res => {
+          const items = this.state.items.filter(i => {
+            if (i.id !== id) return i;
+          });
+          this.setState({ items });
+        });
+  };
+
   renderItems = () => {
     return this.state.items.map(i => (
       <Card raised style={styles.cardColor}>
@@ -41,9 +56,13 @@ class Dep extends React.Component {
         </Card.Content>
         <Card.Content extra>
           <Button.Group attached="bottom">
-            <Button>Edit</Button>
+            <Button as={Link} to={""}>
+              Edit
+            </Button>
             <Button.Or text="or" color="grey" />
-            <Button color="red">Delete</Button>
+            <Button color="red" onClick={() => this.itemDelete(i.id)}>
+              Delete
+            </Button>
           </Button.Group>
         </Card.Content>
       </Card>
@@ -52,6 +71,7 @@ class Dep extends React.Component {
 
   render() {
     const { name, id } = this.state.dep;
+    const itemId = this.state.items.id;
     return (
       <div>
         <div style={styles.flex}>
@@ -68,6 +88,10 @@ class Dep extends React.Component {
           </div>
         </div>
         <hr />
+        <br />
+        <Link to={`/departments/${id}/item/new`}>
+          <Button color="green">New Item</Button>
+        </Link>
         <br />
         <br />
         <Card.Group itemsPerRow="2">{this.renderItems()}</Card.Group>
