@@ -42,6 +42,7 @@ class Dep extends React.Component {
   };
 
   renderItems = () => {
+    const { id } = this.state.dep;
     return this.state.items.map(i => (
       <Card raised style={styles.cardColor}>
         <Card.Content>
@@ -56,7 +57,7 @@ class Dep extends React.Component {
         </Card.Content>
         <Card.Content extra>
           <Button.Group attached="bottom">
-            <Button as={Link} to={""}>
+            <Button as={Link} to={`/departments/${id}/items/${i.id}/edit`}>
               Edit
             </Button>
             <Button.Or text="or" color="grey" />

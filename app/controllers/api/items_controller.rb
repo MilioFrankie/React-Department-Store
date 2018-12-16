@@ -1,6 +1,6 @@
 class Api::ItemsController < ApplicationController
   before_action :set_department
-  before_action :set_item, only: :destroy
+  before_action :set_item, only: [:destroy, :show, :update]
   before_action :item_params, only: [:create, :update]
 
 
@@ -26,7 +26,7 @@ class Api::ItemsController < ApplicationController
     if @item.update(item_params)
       render json: @item
     else
-      render json:@item.errors
+      render json: @item.errors
     end
   end
 

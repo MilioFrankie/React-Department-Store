@@ -27,12 +27,17 @@ class App extends React.Component {
               path="/departments/:id/edit"
               render={props => <DepForm edit {...props} />}
             />
+            <Route exact path="/departments/:id" component={Dep} />
             <Route
               exact
               path="/departments/:id/item/new"
               component={ItemForm}
             />
-            <Route exact path="/departments/:id" component={Dep} />
+            <Route
+              exact
+              path="/departments/:id/items/:itemId/edit"
+              component={ItemForm}
+            />
             <Route component={NoMatch} />
           </Switch>
         </Container>

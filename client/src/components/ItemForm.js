@@ -5,6 +5,14 @@ import axios from "axios";
 class ItemForm extends React.Component {
   state = { name: "", description: "", price: "" };
 
+  componentDidMount() {
+    const { id, itemId } = this.props.match.params;
+    if (itemId)
+      axios
+        .get(`/api/departments/${id}/items/${itemId}`)
+        .then(res => this.setState({ ...res.data }));
+  }
+
   handleChange = e => {
     const { name, value } = e.target;
     this.setState({ [name]: value });
@@ -13,19 +21,29 @@ class ItemForm extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
 
-    const { id } = this.props.match.params;
+    const { id, itemId } = this.props.match.params;
     const { push } = this.props.history;
 
-    axios
-      .post(`/api/departments/${id}/items`, { ...this.state })
-      .then(res => push(`/departments/${id}`));
+    if (itemId) {
+      axios
+        .put(`/api/departments/${id}/items/${itemId}`, { ...this.state })
+        .then(res => push(`/departments/${id}`));
+    } else {
+      axios
+        .post(`/api/departments/${id}/items`, { ...this.state })
+        .then(res => push(`/departments/${id}`));
+    }
   };
 
   render() {
     const { name, description, price } = this.state;
+    const { itemId } = this.props.match.params;
+
     return (
       <Form onSubmit={this.handleSubmit}>
-        <h1 style={styles.header}>Create New Item</h1>
+        <h1 style={styles.header}>
+          {itemId ? "Update Item" : "Create New Item"}
+        </h1>
         <hr />
         <br />
         <Form.Group widths="equal">
